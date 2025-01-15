@@ -1,6 +1,4 @@
-# Duke User Guide
-
-// Update the title above to match the actual product name
+# Qwerty User Guide
 
 // Product screenshot goes here
 
