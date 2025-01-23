@@ -61,6 +61,14 @@ public class Qwerty {
         System.out.println(list.get(i));
     }
 
+    public static void deleteTask(int i) {
+        Task task = list.get(i);
+        list.remove(i);
+        System.out.println("Noted. I've removed this task:");
+        System.out.println(task);
+        printListStatus();
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -82,7 +90,10 @@ public class Qwerty {
                 } else if (userInput.startsWith("unmark")) {
                     int index = Integer.parseInt(userInput.substring(7)) - 1;
                     unmarkAsDone(index);
-                } else if (userInput.startsWith("todo")){
+                } else if (userInput.startsWith("delete")){
+                    int index = Integer.parseInt(userInput.substring(7)) - 1;
+                    deleteTask(index);
+                } else if (userInput.startsWith("todo")) {
                     String name = userInput.substring(5);
                     addToDoToList(name);
                 } else if (userInput.startsWith("deadline")) {
