@@ -1,10 +1,14 @@
+import exceptions.EmptyTaskNameException;
+
 public class Task {
     
     private String name;
     private boolean done;
 
-    public Task(String name) {
-        
+    public Task(String name) throws EmptyTaskNameException {
+        if (name.length() == 0) {
+            throw new EmptyTaskNameException();
+        }
         this.name = name;
         this.done = false;
     }

@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import exceptions.BotException;
+import exceptions.EmptyTaskNameException;
 import exceptions.UnknownCommandException;
 
 public class Qwerty {
@@ -16,28 +17,32 @@ public class Qwerty {
         }
     }
 
-    public static void printAddSuccess(int i) {
-        System.out.println("Got it. I've added this task:");
-        System.out.println(list.get(i));
+    public static void printListStatus() {
         System.out.println("Now you have " + list.size() + " task" + (list.size() == 1 ? " " : "s ") + "in the list.");
     }
 
-    public static void addToDoToList(String item) {
+    public static void addToDoToList(String item) throws EmptyTaskNameException {
         Task newTask = new ToDo(item);
         list.add(newTask);
-        printAddSuccess(list.size() - 1);
+        System.out.println("Got it. I've added this todo:");
+        System.out.println(newTask);
+        printListStatus();
     }
 
-    public static void addDeadlineToList(String item, String by) {
+    public static void addDeadlineToList(String item, String by) throws EmptyTaskNameException {
         Task newTask = new Deadline(item, by);
         list.add(newTask);
-        printAddSuccess(list.size() - 1);
+        System.out.println("Got it. I've added this deadline:");
+        System.out.println(newTask);
+        printListStatus();
     }
 
-    public static void addEventToList(String item, String from, String to) {
+    public static void addEventToList(String item, String from, String to) throws EmptyTaskNameException {
         Task newTask = new Event(item, from, to);
         list.add(newTask);
-        printAddSuccess(list.size() - 1);
+        System.out.println("Got it. I've added this event:");
+        System.out.println(newTask);
+        printListStatus();
     }
 
     public static void markAsDone(int i) {
@@ -64,6 +69,7 @@ public class Qwerty {
 
         while (true) {
             String userInput = scanner.nextLine();
+
             if (userInput.equals("bye")) {
                 break;
             }
