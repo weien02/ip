@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import exceptions.BotException;
+import exceptions.UnknownCommandException;
+
 public class Qwerty {
 
     private static ArrayList<Task> list = new ArrayList<>();
@@ -64,27 +67,35 @@ public class Qwerty {
             if (userInput.equals("bye")) {
                 break;
             }
-
-            if (userInput.equals("list")) {
-                printList();
-            } else if (userInput.startsWith("mark")) {
-                int index = Integer.parseInt(userInput.substring(5)) - 1;
-                markAsDone(index);
-            } else if (userInput.startsWith("unmark")) {
-                int index = Integer.parseInt(userInput.substring(7)) - 1;
-                unmarkAsDone(index);
-            } else if (userInput.startsWith("todo")){
-                String name = userInput.substring(5);
-                addToDoToList(name);
-            } else if (userInput.startsWith("deadline")) {
-                String desc = userInput.substring(9);
-                String[] parts = desc.split(" /by ");
-                addDeadlineToList(parts[0], parts[1]);
-            } else if (userInput.startsWith("event")) {
-                String desc = userInput.substring(6);
-                String[] parts = desc.split(" /from | /to ");
-                addEventToList(parts[0], parts[1], parts[2]);
-            }
+            try {
+                if (userInput.equals("list")) {
+                    printList();
+                } else if (userInput.startsWith("mark")) {
+                    int index = Integer.parseInt(userInput.substring(5)) - 1;
+                    markAsDone(index);
+                } else if (userInput.startsWith("unmark")) {
+                    int index = Integer.parseInt(userInput.substring(7)) - 1;
+                    unmarkAsDone(index);
+                } else if (userInput.startsWith("todo")){
+                    String name = userInput.substring(5);
+                    addToDoToList(name);
+                } else if (userInput.startsWith("deadline")) {
+                    String desc = userInput.substring(9);
+                    String[] parts = desc.split(" /by ");
+                    addDeadlineToList(parts[0], parts[1]);
+                } else if (userInput.startsWith("event")) {
+                    String desc = userInput.substring(6);
+                    String[] parts = desc.split(" /from | /to ");
+                    addEventToList(parts[0], parts[1], parts[2]);
+                } else {
+                    throw new UnknownCommandException();
+                }
+            } catch (BotException b) {
+                System.out.println(b);
+            } catch (Exception e) {
+                System.out.println("Huh?! Please make sure your command is properly formatted!");
+            } 
+            
         }
         System.out.println("See ya!");
         scanner.close();
