@@ -1,19 +1,24 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import enums.Commands;
 import exceptions.BotException;
-import exceptions.EmptyTaskNameException;
-import exceptions.UnknownCommandException;
+import exceptions.IncorrectFormatException;
+import exceptions.InvalidIndexException;
 
 public class Qwerty {
 
     private static ArrayList<Task> list = new ArrayList<>();
 
     public static void printList() {
-        System.out.println("Here are the tasks in your list:");
-        for (int i = 0; i < list.size(); i++) {
-            int index = i + 1;
-            System.out.println("" + index + ". " + list.get(i));
+        if (list.size() == 0) {
+            System.out.println("There is nothing in your list!");
+        } else {
+            System.out.println("Here are the tasks in your list:");
+            for (int i = 0; i < list.size(); i++) {
+                int index = i + 1;
+                System.out.println("" + index + ". " + list.get(i));
+            }
         }
     }
 
@@ -21,28 +26,49 @@ public class Qwerty {
         System.out.println("Now you have " + list.size() + " task" + (list.size() == 1 ? " " : "s ") + "in the list.");
     }
 
-    public static void addToDoToList(String item) throws EmptyTaskNameException {
-        Task newTask = new ToDo(item);
+    public static void addToDoToList(String desc) throws BotException {
+        Task newTask = new ToDo(desc);
         list.add(newTask);
         System.out.println("Got it. I've added this todo:");
         System.out.println(newTask);
         printListStatus();
     }
 
-    public static void addDeadlineToList(String item, String by) throws EmptyTaskNameException {
-        Task newTask = new Deadline(item, by);
+    public static void addDeadlineToList(String desc) throws BotException {
+        String[] parts = desc.split(" /by ");
+        if (parts.length != 2) {
+            throw new IncorrectFormatException("deadline");
+        }
+        Task newTask = new Deadline(parts[0], parts[1]);
         list.add(newTask);
         System.out.println("Got it. I've added this deadline:");
         System.out.println(newTask);
         printListStatus();
     }
 
-    public static void addEventToList(String item, String from, String to) throws EmptyTaskNameException {
-        Task newTask = new Event(item, from, to);
+    public static void addEventToList(String desc) throws BotException {
+        String[] parts = desc.split(" /from | /to ");
+        if (parts.length != 3) {
+            throw new IncorrectFormatException("event");
+        }
+        Task newTask = new Event(parts[0], parts[1], parts[2]);
         list.add(newTask);
         System.out.println("Got it. I've added this event:");
         System.out.println(newTask);
         printListStatus();
+    }
+
+    public static int validateIndex(String desc) throws BotException{
+        int index;
+        try {
+            index = Integer.parseInt(desc) - 1;
+        } catch (NumberFormatException n){
+            throw new InvalidIndexException();
+        }
+        if ((index < 0) || (index >= list.size())) {
+            throw new InvalidIndexException();
+        }
+        return index;
     }
 
     public static void markAsDone(int i) {
@@ -78,39 +104,46 @@ public class Qwerty {
         while (true) {
             String userInput = scanner.nextLine();
 
-            if (userInput.equals("bye")) {
-                break;
+            int spaceIndex = userInput.indexOf(' ');
+
+            String command, desc;
+            if (spaceIndex != -1) {
+                command = userInput.substring(0, spaceIndex);
+                desc = userInput.substring(spaceIndex + 1);
+            } else {
+                command = userInput;
+                desc = "";
             }
+
             try {
-                if (userInput.equals("list")) {
-                    printList();
-                } else if (userInput.startsWith("mark")) {
-                    int index = Integer.parseInt(userInput.substring(5)) - 1;
-                    markAsDone(index);
-                } else if (userInput.startsWith("unmark")) {
-                    int index = Integer.parseInt(userInput.substring(7)) - 1;
-                    unmarkAsDone(index);
-                } else if (userInput.startsWith("delete")){
-                    int index = Integer.parseInt(userInput.substring(7)) - 1;
-                    deleteTask(index);
-                } else if (userInput.startsWith("todo")) {
-                    String name = userInput.substring(5);
-                    addToDoToList(name);
-                } else if (userInput.startsWith("deadline")) {
-                    String desc = userInput.substring(9);
-                    String[] parts = desc.split(" /by ");
-                    addDeadlineToList(parts[0], parts[1]);
-                } else if (userInput.startsWith("event")) {
-                    String desc = userInput.substring(6);
-                    String[] parts = desc.split(" /from | /to ");
-                    addEventToList(parts[0], parts[1], parts[2]);
-                } else {
-                    throw new UnknownCommandException();
+                Commands.contains(command);
+                if (command.equals("bye")) {
+                    break;
                 }
+                
+                if (command.equals("list")) {
+                    printList();
+                } else if (command.equals("mark")) {
+                    int index = validateIndex(desc);
+                    markAsDone(index);
+                } else if (command.equals("unmark")) {
+                    int index = validateIndex(desc);
+                    unmarkAsDone(index);
+                } else if (command.equals("delete")){
+                    int index = validateIndex(desc);
+                    deleteTask(index);
+                } else if (command.equals("todo")) {
+                    addToDoToList(desc);
+                } else if (command.equals("deadline")) {
+                    addDeadlineToList(desc);
+                } else if (command.equals("event")) {
+                    addEventToList(desc);
+                }
+
             } catch (BotException b) {
                 System.out.println(b);
             } catch (Exception e) {
-                System.out.println("Huh?! Please make sure your command is properly formatted!");
+                System.out.println(e);
             } 
             
         }
