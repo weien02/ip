@@ -13,10 +13,28 @@ public class Qwerty {
         }
     }
 
-    public static void addToList(String item) {
-        Task newTask = new Task(item);
+    public static void printAddSuccess(int i) {
+        System.out.println("Got it. I've added this task:");
+        System.out.println(list.get(i));
+        System.out.println("Now you have " + list.size() + " task" + (list.size() == 1 ? " " : "s ") + "in the list.");
+    }
+
+    public static void addToDoToList(String item) {
+        Task newTask = new ToDo(item);
         list.add(newTask);
-        System.out.println("added: " + item);
+        printAddSuccess(list.size() - 1);
+    }
+
+    public static void addDeadlineToList(String item, String by) {
+        Task newTask = new Deadline(item, by);
+        list.add(newTask);
+        printAddSuccess(list.size() - 1);
+    }
+
+    public static void addEventToList(String item, String from, String to) {
+        Task newTask = new Event(item, from, to);
+        list.add(newTask);
+        printAddSuccess(list.size() - 1);
     }
 
     public static void markAsDone(int i) {
@@ -55,8 +73,17 @@ public class Qwerty {
             } else if (userInput.startsWith("unmark")) {
                 int index = Integer.parseInt(userInput.substring(7)) - 1;
                 unmarkAsDone(index);
-            } else {
-                addToList(userInput);
+            } else if (userInput.startsWith("todo")){
+                String name = userInput.substring(5);
+                addToDoToList(name);
+            } else if (userInput.startsWith("deadline")) {
+                String desc = userInput.substring(9);
+                String[] parts = desc.split(" /by ");
+                addDeadlineToList(parts[0], parts[1]);
+            } else if (userInput.startsWith("event")) {
+                String desc = userInput.substring(6);
+                String[] parts = desc.split(" /from | /to ");
+                addEventToList(parts[0], parts[1], parts[2]);
             }
         }
         System.out.println("See ya!");
