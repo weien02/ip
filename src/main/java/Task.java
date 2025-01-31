@@ -2,28 +2,33 @@ import exceptions.EmptyTaskNameException;
 
 public class Task {
     
-    private String name;
-    private boolean done;
+    protected String name;
+    protected boolean isDone;
 
     public Task(String name) throws EmptyTaskNameException {
         if (name.length() == 0) {
             throw new EmptyTaskNameException();
         }
         this.name = name;
-        this.done = false;
+        this.isDone = false;
     }
 
     public void markTaskDone() {
-        this.done = true;
+        this.isDone = true;
     }
 
     public void unmarkTaskDone() {
-        this.done = false;
+        this.isDone = false;
     }
 
     @Override
     public String toString() {
-        String check = this.done ? "X" : " ";
+        String check = this.isDone ? "X" : " ";
         return "[" + check + "] " + this.name;
     }
+
+    public String toSaveString() {
+        return "";
+    };
+
 }

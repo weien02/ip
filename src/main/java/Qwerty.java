@@ -1,3 +1,9 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -29,6 +35,7 @@ public class Qwerty {
     public static void addToDoToList(String desc) throws BotException {
         Task newTask = new ToDo(desc);
         list.add(newTask);
+        saveListToFile();
         System.out.println("Got it. I've added this todo:");
         System.out.println(newTask);
         printListStatus();
@@ -41,6 +48,7 @@ public class Qwerty {
         }
         Task newTask = new Deadline(parts[0], parts[1]);
         list.add(newTask);
+        saveListToFile();
         System.out.println("Got it. I've added this deadline:");
         System.out.println(newTask);
         printListStatus();
@@ -53,6 +61,7 @@ public class Qwerty {
         }
         Task newTask = new Event(parts[0], parts[1], parts[2]);
         list.add(newTask);
+        saveListToFile();
         System.out.println("Got it. I've added this event:");
         System.out.println(newTask);
         printListStatus();
@@ -75,6 +84,7 @@ public class Qwerty {
         Task task = list.get(i);
         task.markTaskDone();
         list.set(i, task);
+        saveListToFile();
         System.out.println("Nice! I've marked this task as done:");
         System.out.println(list.get(i));
     }
@@ -83,6 +93,7 @@ public class Qwerty {
         Task task = list.get(i);
         task.unmarkTaskDone();
         list.set(i, task);
+        saveListToFile();
         System.out.println("OK, I've marked this task as not done yet:");
         System.out.println(list.get(i));
     }
@@ -92,12 +103,65 @@ public class Qwerty {
         list.remove(i);
         System.out.println("Noted. I've removed this task:");
         System.out.println(task);
+        saveListToFile();
         printListStatus();
     }
+
+    public static void saveListToFile() {
+        File file = new File("./data/Qwerty.txt");
+        file.getParentFile().mkdirs();
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            for (int i = 0; i < list.size(); i++) {
+                Task task = list.get(i);
+                writer.write(task.toSaveString());
+                writer.newLine();
+            }
+
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public static void readListFromFile() {
+        try (BufferedReader br = new BufferedReader(new FileReader("./data/Qwerty.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("\\s*\\|\\s*");
+                char type = parts[0].charAt(0);
+                boolean isDone = parts[1].charAt(0) == '1';
+                String details = parts[2];
+                
+                switch (type) {
+                    case 'T':
+                        list.add(new ToDo(details));
+                        break;
+                    case 'D':
+                        list.add(new Deadline(details, parts[3]));
+                        break;
+                    case 'E':
+                        list.add(new Event(details, parts[3], parts[4]));
+                        break;
+                }
+                if (isDone) {
+                    Task task = list.get(list.size() - 1);
+                    task.markTaskDone();
+                    list.set(list.size() - 1, task);
+                    saveListToFile();
+                }
+            }
+        } catch (IOException e) {
+
+        } catch (BotException b) {
+            System.out.println(b);
+        }
+    }
+        
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        readListFromFile();
         System.out.println("Hi! I'm Qwerty!");
         System.out.println("How can I help?");
 
