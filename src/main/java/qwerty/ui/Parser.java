@@ -6,6 +6,7 @@ import qwerty.commands.CommandsEnum;
 import qwerty.commands.DeadlineCommand;
 import qwerty.commands.DeleteCommand;
 import qwerty.commands.EventCommand;
+import qwerty.commands.FindCommand;
 import qwerty.commands.ListCommand;
 import qwerty.commands.MarkCommand;
 import qwerty.commands.TodoCommand;
@@ -62,23 +63,25 @@ public class Parser {
 
             // Returns the appropriate BotCommand based on the command.
             switch (command) {
-                case "bye":
-                    return new ByeCommand();
-                case "list":
-                    return new ListCommand();
-                case "mark":
-                    return new MarkCommand(validateIndex(desc));
-                case "unmark":
-                    return new UnmarkCommand(validateIndex(desc));
-                case "delete":
-                    return new DeleteCommand(validateIndex(desc));
-                case "todo":
-                    return new TodoCommand(desc);
-                case "deadline":
-                    return new DeadlineCommand(desc);
-                case "event":
-                    return new EventCommand(desc);
-                default:
+            case "bye":
+                return new ByeCommand();
+            case "list":
+                return new ListCommand();
+            case "mark":
+                return new MarkCommand(validateIndex(desc));
+            case "unmark":
+                return new UnmarkCommand(validateIndex(desc));
+            case "delete":
+                return new DeleteCommand(validateIndex(desc));
+            case "todo":
+                return new TodoCommand(desc);
+            case "deadline":
+                return new DeadlineCommand(desc);
+            case "event":
+                return new EventCommand(desc);
+            case "find":
+                return new FindCommand(desc);
+            default:
                     throw new UnknownCommandException();  // Throws exception if the command is unrecognized.
             }
         } catch (BotException e) {

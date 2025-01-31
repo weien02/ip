@@ -16,6 +16,7 @@ public enum CommandsEnum {
     todo,       // Command to create a ToDo task.
     deadline,   // Command to create a Deadline task.
     event;      // Command to create an Event task.
+    find;       // Command to create a Find task.
 
     /**
      * Checks if the provided command string corresponds to a valid command in the enum.
@@ -31,4 +32,3 @@ public enum CommandsEnum {
         }
     }
 }
-
