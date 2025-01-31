@@ -2,24 +2,24 @@ package qwerty.ui;
 import java.util.Scanner;
 
 public class Ui {
-    private final String BREAKLINE = "------------------------------------------------------------";
-    private final String WELCOME_MESSAGE = "Hi! I'm Qwerty!\nHow can I help?";
-    private final Scanner SCANNER = new Scanner(System.in);
+    private final String breakline = "------------------------------------------------------------";
+    private final String welcomeMessage = "Hi! I'm Qwerty!\nHow can I help?";
+    private final Scanner scanner = new Scanner(System.in);
 
     public void showWelcome() {
-        System.out.println(WELCOME_MESSAGE);
+        System.out.println(welcomeMessage);
     }
 
     public void showLine() {
-        System.out.println(BREAKLINE);
+        System.out.println(breakline);
     }
 
     public String readCommand() {
-        String command = SCANNER.nextLine();
+        String command = scanner.nextLine();
         return command;
     }
 
     public void closeScanner() {
-        this.SCANNER.close();
+        this.scanner.close();
     }
 }

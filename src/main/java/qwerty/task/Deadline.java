@@ -1,13 +1,15 @@
 package qwerty.task;
-import qwerty.exceptions.EmptyTaskNameException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+import qwerty.exceptions.EmptyTaskNameException;
+
 public class Deadline extends Task {
-    private LocalDateTime by;
+
     private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mma");
+    private LocalDateTime by;
 
     public Deadline(String name, String by) throws EmptyTaskNameException {
         super(name);

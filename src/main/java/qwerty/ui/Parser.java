@@ -15,11 +15,11 @@ import qwerty.exceptions.UnknownCommandException;
 
 public class Parser {
 
-    public static int validateIndex(String desc) throws BotException{
+    public static int validateIndex(String desc) throws BotException {
         int index;
         try {
             index = Integer.parseInt(desc) - 1;
-        } catch (NumberFormatException n){
+        } catch (NumberFormatException n) {
             throw new InvalidIndexException();
         }
         return index;
@@ -28,8 +28,9 @@ public class Parser {
     public static BotCommand parse(String fullCommand) throws BotException {
         try {
             int spaceIndex = fullCommand.indexOf(' ');
-    
-            String command, desc;
+
+            String command;
+            String desc;
             if (spaceIndex != -1) {
                 command = fullCommand.substring(0, spaceIndex);
                 desc = fullCommand.substring(spaceIndex + 1);
@@ -37,28 +38,28 @@ public class Parser {
                 command = fullCommand;
                 desc = "";
             }
-    
+
             CommandsEnum.contains(command);
-    
+
             switch (command) {
-                case "bye":
-                    return new ByeCommand();
-                case "list":
-                    return new ListCommand();
-                case "mark":
-                    return new MarkCommand(validateIndex(desc));
-                case "unmark":
-                    return new UnmarkCommand(validateIndex(desc));
-                case "delete":
-                    return new DeleteCommand(validateIndex(desc));
-                case "todo":
-                    return new TodoCommand(desc);
-                case "deadline":
-                    return new DeadlineCommand(desc);
-                case "event":
-                    return new EventCommand(desc);
-                default:
-                    throw new UnknownCommandException();
+            case "bye":
+                return new ByeCommand();
+            case "list":
+                return new ListCommand();
+            case "mark":
+                return new MarkCommand(validateIndex(desc));
+            case "unmark":
+                return new UnmarkCommand(validateIndex(desc));
+            case "delete":
+                return new DeleteCommand(validateIndex(desc));
+            case "todo":
+                return new TodoCommand(desc);
+            case "deadline":
+                return new DeadlineCommand(desc);
+            case "event":
+                return new EventCommand(desc);
+            default:
+                throw new UnknownCommandException();
             }
         } catch (BotException e) {
             throw e;

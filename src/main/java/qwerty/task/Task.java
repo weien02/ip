@@ -2,7 +2,7 @@ package qwerty.task;
 import qwerty.exceptions.EmptyTaskNameException;
 
 public class Task {
-    
+
     protected String name;
     protected boolean isDone;
 

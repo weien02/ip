@@ -6,7 +6,7 @@ import qwerty.ui.TaskList;
 import qwerty.ui.Ui;
 
 public class BotCommand {
-    
+
     public boolean isBye() {
         return false;
     }
@@ -14,5 +14,4 @@ public class BotCommand {
     public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
         return;
     }
-
 }

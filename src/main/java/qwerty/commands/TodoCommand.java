@@ -6,7 +6,7 @@ import qwerty.ui.TaskList;
 import qwerty.ui.Ui;
 
 public class TodoCommand extends BotCommand {
-    
+
     private String desc;
 
     public TodoCommand(String desc) {

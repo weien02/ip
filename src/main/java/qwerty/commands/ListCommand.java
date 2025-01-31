@@ -11,5 +11,4 @@ public class ListCommand extends BotCommand {
     public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
         tasks.printList();
     }
-    
 }

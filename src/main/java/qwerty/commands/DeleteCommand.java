@@ -6,7 +6,7 @@ import qwerty.ui.TaskList;
 import qwerty.ui.Ui;
 
 public class DeleteCommand extends BotCommand {
-    
+
     private int index;
 
     public DeleteCommand(int index) {
@@ -18,5 +18,4 @@ public class DeleteCommand extends BotCommand {
         tasks.deleteTask(this.index);
         storage.saveListToFile(tasks);
     }
-
 }

@@ -2,7 +2,7 @@ package qwerty.task;
 import qwerty.exceptions.EmptyTaskNameException;
 
 public class Event extends Task {
-    
+
     private String from;
     private String to;
 
