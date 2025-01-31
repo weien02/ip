@@ -3,7 +3,7 @@ package commands;
 import exceptions.BotException;
 import exceptions.UnknownCommandException;
 
-public enum Commands {
+public enum CommandsEnum {
     bye,
     list,
     mark,

@@ -1,7 +1,7 @@
 package ui;
 import commands.BotCommand;
 import commands.ByeCommand;
-import commands.Commands;
+import commands.CommandsEnum;
 import commands.DeadlineCommand;
 import commands.DeleteCommand;
 import commands.EventCommand;
@@ -38,7 +38,7 @@ public class Parser {
                 desc = "";
             }
     
-            Commands.contains(command);
+            CommandsEnum.contains(command);
     
             switch (command) {
                 case "bye":
