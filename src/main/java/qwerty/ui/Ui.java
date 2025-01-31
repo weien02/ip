@@ -8,9 +8,9 @@ import java.util.Scanner;
  */
 public class Ui {
 
-    private final String breakline = "------------------------------------------------------------";  // Separator line for formatting.
-    private final String welcomeMessage = "Hi! I'm Qwerty!\nHow can I help?";  // Welcome message to display.
-    private final Scanner scanner = new Scanner(System.in);  // Scanner to read user input.
+    private final String breakline = "------------------------------------------------------------"; // Separator line.
+    private final String welcomeMessage = "Hi! I'm Qwerty!\nHow can I help?"; // Welcome message to display.
+    private final Scanner scanner = new Scanner(System.in); // Scanner to read user input.
 
     /**
      * Displays a welcome message to the user.

@@ -8,8 +8,8 @@ import qwerty.exceptions.EmptyTaskNameException;
  */
 public class Task {
 
-    protected String name;  // The name or description of the task.
-    protected boolean isDone;  // The completion status of the task (true if completed, false if not).
+    protected String name; // The name or description of the task.
+    protected boolean isDone; // The completion status of the task (true if completed, false if not).
 
     /**
      * Constructs a Task with the specified name.
@@ -19,24 +19,24 @@ public class Task {
      */
     public Task(String name) throws EmptyTaskNameException {
         if (name.length() == 0) {
-            throw new EmptyTaskNameException();  // Throws exception if the name is empty.
+            throw new EmptyTaskNameException(); // Throws exception if the name is empty.
         }
         this.name = name;
-        this.isDone = false;  // Task is not done initially.
+        this.isDone = false; // Task is not done initially.
     }
 
     /**
      * Marks the task as completed.
      */
     public void markTaskDone() {
-        this.isDone = true;  // Sets task status to completed.
+        this.isDone = true; // Sets task status to completed.
     }
 
     /**
      * Unmarks the task as completed.
      */
     public void unmarkTaskDone() {
-        this.isDone = false;  // Sets task status to not completed.
+        this.isDone = false; // Sets task status to not completed.
     }
 
     /**
@@ -46,8 +46,8 @@ public class Task {
      */
     @Override
     public String toString() {
-        String check = this.isDone ? "X" : " ";  // Displays X if task is done, otherwise space.
-        return "[" + check + "] " + this.name;  // Returns task with completion status.
+        String check = this.isDone ? "X" : " "; // Displays X if task is done, otherwise space.
+        return "[" + check + "] " + this.name; // Returns task with completion status.
     }
 
     /**
@@ -57,6 +57,6 @@ public class Task {
      * @return A string representing the Task in a save-friendly format.
      */
     public String toSaveString() {
-        return "";  // Default implementation returns an empty string.
+        return ""; // Default implementation returns an empty string.
     }
 }

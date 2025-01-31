@@ -14,6 +14,7 @@ public class UnknownCommandException extends BotException {
      */
     @Override
     public String toString() {
-        return super.toString() + " I don't understand the words that are coming out of your mouth!";  // Custom error message.
+        // Custom error message
+        return super.toString() + " I don't understand the words that are coming out of your mouth!";
     }
 }

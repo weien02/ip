@@ -8,8 +8,8 @@ import qwerty.exceptions.EmptyTaskNameException;
  */
 public class Event extends Task {
 
-    private String from;  // Start time of the event.
-    private String to;    // End time of the event.
+    private String from; // Start time of the event.
+    private String to; // End time of the event.
 
     /**
      * Constructs an Event task with the specified name, start time, and end time.
@@ -20,7 +20,7 @@ public class Event extends Task {
      * @throws EmptyTaskNameException If the task name is empty.
      */
     public Event(String name, String from, String to) throws EmptyTaskNameException {
-        super(name);  // Calls the parent constructor to set the task name.
+        super(name); // Calls the parent constructor to set the task name.
         this.from = from;
         this.to = to;
     }
@@ -32,7 +32,7 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (from: " + from + " to: " + to + ")";  // Includes event time range.
+        return "[E]" + super.toString() + " (from: " + from + " to: " + to + ")"; // Includes event time range.
     }
 
     /**
@@ -42,6 +42,6 @@ public class Event extends Task {
      */
     @Override
     public String toSaveString() {
-        return "E | " + (this.isDone ? "1 | " : "0 | ") + this.name + " | " + from + " | " + to;  // Includes save format for task state and event time.
+        return "E | " + (this.isDone ? "1 | " : "0 | ") + this.name + " | " + from + " | " + to;
     }
 }

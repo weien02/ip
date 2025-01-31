@@ -17,7 +17,7 @@ import qwerty.task.ToDo;
  */
 public class TaskList {
 
-    private ArrayList<Task> list;  // List to hold tasks.
+    private ArrayList<Task> list; // List to hold tasks.
 
     /**
      * Constructs a TaskList with the given list of tasks.

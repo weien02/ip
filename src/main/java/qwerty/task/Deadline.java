@@ -12,9 +12,9 @@ import qwerty.exceptions.EmptyTaskNameException;
  */
 public class Deadline extends Task {
 
-    private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");  // Formatter for input date format.
-    private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mma");  // Formatter for output display.
-    private LocalDateTime by;  // Deadline date and time.
+    private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+    private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mma");
+    private LocalDateTime by; // Deadline date and time.
 
     /**
      * Constructs a Deadline task with the specified name and deadline date/time.
@@ -25,9 +25,9 @@ public class Deadline extends Task {
      * @throws IllegalArgumentException If the date format is incorrect.
      */
     public Deadline(String name, String by) throws EmptyTaskNameException {
-        super(name);  // Calls the parent constructor to set the task name.
+        super(name); // Calls the parent constructor to set the task name.
         try {
-            this.by = LocalDateTime.parse(by, INPUT_FORMATTER);  // Parses the deadline date.
+            this.by = LocalDateTime.parse(by, INPUT_FORMATTER); // Parses the deadline date.
         } catch (DateTimeParseException e) {
             throw new IllegalArgumentException("Invalid date format! Use yyyy-MM-dd HHmm (e.g., 2019-10-15 1800).");
         }
@@ -40,7 +40,7 @@ public class Deadline extends Task {
      */
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + by.format(OUTPUT_FORMATTER) + ")";  // Includes formatted due date.
+        return "[D]" + super.toString() + " (by: " + by.format(OUTPUT_FORMATTER) + ")"; // Includes formatted due date.
     }
 
     /**
@@ -50,6 +50,6 @@ public class Deadline extends Task {
      */
     @Override
     public String toSaveString() {
-        return "D | " + (this.isDone ? "1 | " : "0 | ") + this.name + " | " + by.format(INPUT_FORMATTER);  // Includes save format for task state and due date.
+        return "D | " + (this.isDone ? "1 | " : "0 | ") + this.name + " | " + by.format(INPUT_FORMATTER);
     }
 }

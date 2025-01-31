@@ -7,7 +7,7 @@ package qwerty.exceptions;
  */
 public class IncorrectFormatException extends BotException {
 
-    private String commandType;  // Type of the command with incorrect format.
+    private String commandType; // Type of the command with incorrect format.
 
     /**
      * Constructs an IncorrectFormatException with the specified command type.

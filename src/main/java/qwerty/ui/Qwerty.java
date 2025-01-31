@@ -13,9 +13,9 @@ import qwerty.task.Task;
  */
 public class Qwerty {
 
-    private Storage storage;  // Manages reading and saving tasks to file.
-    private TaskList tasks;   // List of tasks managed by the bot.
-    private Ui ui;            // Handles user interactions and displays messages.
+    private Storage storage; // Manages reading and saving tasks to file.
+    private TaskList tasks; // List of tasks managed by the bot.
+    private Ui ui; // Handles user interactions and displays messages.
 
     /**
      * Constructs a Qwerty bot with the specified file path for storing tasks.
@@ -28,11 +28,11 @@ public class Qwerty {
         this.ui = new Ui();
         this.storage = new Storage(filePath);
         try {
-            ArrayList<Task> list = storage.readListFromFile();  // Reads saved tasks from file.
+            ArrayList<Task> list = storage.readListFromFile(); // Reads saved tasks from file.
             this.tasks = new TaskList(list);
         } catch (Exception e) {
-            System.out.println(e.getMessage());  // Prints any exception that occurs during loading.
-            this.tasks = new TaskList(new ArrayList<>());  // Initializes with an empty task list.
+            System.out.println(e.getMessage()); // Prints any exception that occurs during loading.
+            this.tasks = new TaskList(new ArrayList<>()); // Initializes with an empty task list.
         }
     }
 
@@ -42,25 +42,25 @@ public class Qwerty {
      * and displays feedback. The loop terminates when the user inputs the 'bye' command.
      */
     public void run() {
-        ui.showWelcome();  // Displays a welcome message.
+        ui.showWelcome(); // Displays a welcome message.
         boolean isExit = false;
         while (!isExit) {
             try {
-                String fullCommand = ui.readCommand();  // Reads the user's command.
+                String fullCommand = ui.readCommand(); // Reads the user's command.
                 ui.showLine();
-                BotCommand c = Parser.parse(fullCommand);  // Parses the command and creates the corresponding BotCommand.
-                c.execute(tasks, ui, storage);  // Executes the command.
-                isExit = c.isBye();  // Checks if the 'bye' command was entered to exit the loop.
+                BotCommand c = Parser.parse(fullCommand); // Parses the command and creates the BotCommand.
+                c.execute(tasks, ui, storage); // Executes the command.
+                isExit = c.isBye(); // Checks if the 'bye' command was entered to exit the loop.
             } catch (BotException e) {
-                System.out.println(e);  // Prints error message if any BotException occurs.
+                System.out.println(e); // Prints error message if any BotException occurs.
             } finally {
                 if (!isExit) {
-                    ui.showLine();  // Shows a separator line after each command execution.
+                    ui.showLine(); // Shows a separator line after each command execution.
                 }
             }
         }
-        System.out.println("Bye! See you soon!");  // Farewell message when the loop ends.
-        ui.closeScanner();  // Closes the scanner to clean up resources.
+        System.out.println("Bye! See you soon!"); // Farewell message when the loop ends.
+        ui.closeScanner(); // Closes the scanner to clean up resources.
     }
 
     /**
@@ -70,6 +70,6 @@ public class Qwerty {
      * @param args Command-line arguments (not used).
      */
     public static void main(String[] args) {
-        new Qwerty("./data/Qwerty.txt").run();  // Starts the Qwerty bot with a file path for storage.
+        new Qwerty("./data/Qwerty.txt").run(); // Starts the Qwerty bot with a file path for storage.
     }
 }

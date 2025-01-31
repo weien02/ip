@@ -12,7 +12,7 @@ import qwerty.ui.Ui;
  */
 public class UnmarkCommand extends BotCommand {
 
-    private int index;  // Index of the task to be unmarked.
+    private int index; // Index of the task to be unmarked.
 
     /**
      * Constructs an UnmarkCommand with the specified task index.
@@ -33,7 +33,7 @@ public class UnmarkCommand extends BotCommand {
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
-        tasks.unmarkAsDone(this.index);  // Unmarks the task at the specified index.
-        storage.saveListToFile(tasks);    // Saves the updated task list to storage.
+        tasks.unmarkAsDone(this.index); // Unmarks the task at the specified index.
+        storage.saveListToFile(tasks); // Saves the updated task list to storage.
     }
 }

@@ -12,7 +12,7 @@ import qwerty.ui.Ui;
  */
 public class EventCommand extends BotCommand {
 
-    private String desc;  // Description of the Event task.
+    private String desc; // Description of the Event task.
 
     /**
      * Constructs an EventCommand with the specified description.
@@ -33,7 +33,7 @@ public class EventCommand extends BotCommand {
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
-        tasks.addEventToList(this.desc);  // Adds the Event task to the list.
-        storage.saveListToFile(tasks);     // Saves the updated task list to storage.
+        tasks.addEventToList(this.desc); // Adds the Event task to the list.
+        storage.saveListToFile(tasks); // Saves the updated task list to storage.
     }
 }

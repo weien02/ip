@@ -15,7 +15,7 @@ public class ToDo extends Task {
      * @throws EmptyTaskNameException If the task name is empty.
      */
     public ToDo(String name) throws EmptyTaskNameException {
-        super(name);  // Calls the parent constructor to set the task name.
+        super(name); // Calls the parent constructor to set the task name.
     }
 
     /**
@@ -25,7 +25,7 @@ public class ToDo extends Task {
      */
     @Override
     public String toString() {
-        return "[T]" + super.toString();  // Adds the "T" label for ToDo tasks and calls the parent toString method.
+        return "[T]" + super.toString(); // Adds the "T" label for ToDo tasks and calls the parent toString method.
     }
 
     /**
@@ -35,6 +35,6 @@ public class ToDo extends Task {
      */
     @Override
     public String toSaveString() {
-        return "T | " + (this.isDone ? "1 | " : "0 | ") + this.name;  // Includes save format for task state.
+        return "T | " + (this.isDone ? "1 | " : "0 | ") + this.name; // Includes save format for task state.
     }
 }
