@@ -1,10 +1,20 @@
 package qwerty.commands;
 
-public class ByeCommand extends BotCommand{
-    
+/**
+ * Represents a command to terminate the bot's operation.
+ * This command corresponds to the "bye" action and overrides the
+ * `isBye` method to return true.
+ */
+public class ByeCommand extends BotCommand {
+
+    /**
+     * Checks if the command corresponds to a "bye" command.
+     * This implementation returns true to indicate the "bye" command.
+     *
+     * @return true, indicating this is a "bye" command.
+     */
     @Override
     public boolean isBye() {
         return true;
     }
-
 }
