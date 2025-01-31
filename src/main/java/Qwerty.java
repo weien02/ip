@@ -184,7 +184,7 @@ public class Qwerty {
                 if (command.equals("bye")) {
                     break;
                 }
-                
+
                 if (command.equals("list")) {
                     printList();
                 } else if (command.equals("mark")) {
@@ -207,7 +207,7 @@ public class Qwerty {
             } catch (BotException b) {
                 System.out.println(b);
             } catch (Exception e) {
-                System.out.println(e);
+                System.out.println(e.getMessage());
             } 
             
         }
