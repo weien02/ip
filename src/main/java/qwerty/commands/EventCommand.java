@@ -6,7 +6,7 @@ import qwerty.ui.TaskList;
 import qwerty.ui.Ui;
 
 public class EventCommand extends BotCommand {
-    
+
     private String desc;
 
     public EventCommand(String desc) {

@@ -6,7 +6,7 @@ import qwerty.ui.TaskList;
 import qwerty.ui.Ui;
 
 public class DeadlineCommand extends BotCommand {
-    
+
     private String desc;
 
     public DeadlineCommand(String desc) {
@@ -18,5 +18,4 @@ public class DeadlineCommand extends BotCommand {
         tasks.addDeadlineToList(this.desc);
         storage.saveListToFile(tasks);
     }
-
 }

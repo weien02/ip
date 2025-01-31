@@ -15,12 +15,12 @@ import qwerty.task.ToDo;
 
 public class Storage {
 
-    String filePath;
+    private String filePath;
 
     public Storage(String filePath) {
         this.filePath = filePath;
     }
-    
+
     public void saveListToFile(TaskList tasks) {
         File file = new File(filePath);
         file.getParentFile().mkdirs();
@@ -48,15 +48,16 @@ public class Storage {
                 String details = parts[2];
                 Task task = null;
                 switch (type) {
-                    case 'T':
-                        task = new ToDo(details);
-                        break;
-                    case 'D':
-                        task = new Deadline(details, parts[3]);
-                        break;
-                    case 'E':
-                        task = new Event(details, parts[3], parts[4]);
-                        break;
+                case 'T':
+                    task = new ToDo(details);
+                    break;
+                case 'D':
+                    task = new Deadline(details, parts[3]);
+                    break;
+                case 'E':
+                    task = new Event(details, parts[3], parts[4]);
+                    break;
+                default:
                 }
                 if (isDone) {
                     task.markTaskDone();

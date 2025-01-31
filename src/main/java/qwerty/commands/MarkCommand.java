@@ -6,7 +6,7 @@ import qwerty.ui.TaskList;
 import qwerty.ui.Ui;
 
 public class MarkCommand extends BotCommand {
-    
+
     private int index;
 
     public MarkCommand(int index) {

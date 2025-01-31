@@ -6,7 +6,7 @@ import qwerty.ui.TaskList;
 import qwerty.ui.Ui;
 
 public class UnmarkCommand extends BotCommand {
-    
+
     private int index;
 
     public UnmarkCommand(int index) {

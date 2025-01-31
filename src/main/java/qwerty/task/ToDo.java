@@ -1,7 +1,7 @@
 package qwerty.task;
 import qwerty.exceptions.EmptyTaskNameException;
 
-public class ToDo extends Task{
+public class ToDo extends Task {
 
     public ToDo(String name) throws EmptyTaskNameException {
         super(name);
