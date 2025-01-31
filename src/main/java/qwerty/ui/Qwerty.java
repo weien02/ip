@@ -1,9 +1,9 @@
-package ui;
+package qwerty.ui;
 import java.util.ArrayList;
 
-import commands.BotCommand;
-import exceptions.BotException;
-import task.Task;
+import qwerty.commands.BotCommand;
+import qwerty.exceptions.BotException;
+import qwerty.task.Task;
 
 public class Qwerty {
 

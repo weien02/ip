@@ -1,4 +1,4 @@
-package ui;
+package qwerty.ui;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -7,11 +7,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import exceptions.BotException;
-import task.Deadline;
-import task.Event;
-import task.Task;
-import task.ToDo;
+import qwerty.exceptions.BotException;
+import qwerty.task.Deadline;
+import qwerty.task.Event;
+import qwerty.task.Task;
+import qwerty.task.ToDo;
 
 public class Storage {
 

@@ -1,4 +1,4 @@
-package commands;
+package qwerty.commands;
 
 public class ByeCommand extends BotCommand{
     

@@ -1,4 +1,4 @@
-package exceptions;
+package qwerty.exceptions;
 
 public class InvalidIndexException extends BotException {
     

@@ -1,5 +1,5 @@
-package task;
-import exceptions.EmptyTaskNameException;
+package qwerty.task;
+import qwerty.exceptions.EmptyTaskNameException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;

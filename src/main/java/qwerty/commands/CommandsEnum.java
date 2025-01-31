@@ -1,7 +1,7 @@
-package commands;
+package qwerty.commands;
 
-import exceptions.BotException;
-import exceptions.UnknownCommandException;
+import qwerty.exceptions.BotException;
+import qwerty.exceptions.UnknownCommandException;
 
 public enum CommandsEnum {
     bye,

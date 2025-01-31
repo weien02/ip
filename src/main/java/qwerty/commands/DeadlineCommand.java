@@ -1,9 +1,9 @@
-package commands;
+package qwerty.commands;
 
-import exceptions.BotException;
-import ui.Storage;
-import ui.TaskList;
-import ui.Ui;
+import qwerty.exceptions.BotException;
+import qwerty.ui.Storage;
+import qwerty.ui.TaskList;
+import qwerty.ui.Ui;
 
 public class DeadlineCommand extends BotCommand {
     

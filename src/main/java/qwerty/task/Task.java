@@ -1,5 +1,5 @@
-package task;
-import exceptions.EmptyTaskNameException;
+package qwerty.task;
+import qwerty.exceptions.EmptyTaskNameException;
 
 public class Task {
     

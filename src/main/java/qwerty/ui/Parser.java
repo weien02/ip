@@ -1,17 +1,17 @@
-package ui;
-import commands.BotCommand;
-import commands.ByeCommand;
-import commands.CommandsEnum;
-import commands.DeadlineCommand;
-import commands.DeleteCommand;
-import commands.EventCommand;
-import commands.ListCommand;
-import commands.MarkCommand;
-import commands.TodoCommand;
-import commands.UnmarkCommand;
-import exceptions.BotException;
-import exceptions.InvalidIndexException;
-import exceptions.UnknownCommandException;
+package qwerty.ui;
+import qwerty.commands.BotCommand;
+import qwerty.commands.ByeCommand;
+import qwerty.commands.CommandsEnum;
+import qwerty.commands.DeadlineCommand;
+import qwerty.commands.DeleteCommand;
+import qwerty.commands.EventCommand;
+import qwerty.commands.ListCommand;
+import qwerty.commands.MarkCommand;
+import qwerty.commands.TodoCommand;
+import qwerty.commands.UnmarkCommand;
+import qwerty.exceptions.BotException;
+import qwerty.exceptions.InvalidIndexException;
+import qwerty.exceptions.UnknownCommandException;
 
 public class Parser {
 

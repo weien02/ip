@@ -1,13 +1,13 @@
-package ui;
+package qwerty.ui;
 import java.util.ArrayList;
 
-import exceptions.BotException;
-import exceptions.IncorrectFormatException;
-import exceptions.InvalidIndexException;
-import task.Deadline;
-import task.Event;
-import task.Task;
-import task.ToDo;
+import qwerty.exceptions.BotException;
+import qwerty.exceptions.IncorrectFormatException;
+import qwerty.exceptions.InvalidIndexException;
+import qwerty.task.Deadline;
+import qwerty.task.Event;
+import qwerty.task.Task;
+import qwerty.task.ToDo;
 
 public class TaskList {
 
