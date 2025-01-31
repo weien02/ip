@@ -11,7 +11,8 @@ public enum CommandsEnum {
     delete,
     todo,
     deadline,
-    event;
+    event,
+    find;
 
     public static void contains(String command) throws BotException {
         try {
