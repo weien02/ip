@@ -1,4 +1,4 @@
-package enums;
+package commands;
 
 import exceptions.BotException;
 import exceptions.UnknownCommandException;

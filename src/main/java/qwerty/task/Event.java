@@ -1,3 +1,4 @@
+package task;
 import exceptions.EmptyTaskNameException;
 
 public class Event extends Task {
