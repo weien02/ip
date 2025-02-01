@@ -1,10 +1,6 @@
 package qwerty.commands;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import qwerty.exceptions.BotException;
-import qwerty.task.Task;
 import qwerty.ui.Storage;
 import qwerty.ui.TaskList;
 import qwerty.ui.Ui;
@@ -37,24 +33,6 @@ public class FindCommand extends BotCommand {
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
-        // Get the list of tasks from TaskList (without mutating it)
-        List<Task> list = tasks.getList();
-
-        // Filter the tasks where the toString() representation contains the keyword
-        List<Task> filteredTasks = list.stream()
-                .filter(task -> task.toString().contains(this.keyword))
-                .collect(Collectors.toList());
-
-        // Print the results
-        if (filteredTasks.isEmpty()) {
-            System.out.println("No tasks found containing the keyword: " + this.keyword + "!");
-        } else {
-            System.out.println("Here are the matching tasks in your list:");
-            for (int i = 0; i < filteredTasks.size(); i++) {
-                Task task = filteredTasks.get(i);
-                int index = i + 1;
-                System.out.println(index + ". " + task.toString());
-            }
-        }
+        tasks.printFilteredList(this.keyword);
     }
 }

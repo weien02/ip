@@ -1,6 +1,7 @@
 package qwerty.ui;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import qwerty.exceptions.BotException;
 import qwerty.exceptions.IncorrectFormatException;
@@ -41,13 +42,13 @@ public class TaskList {
      * Prints the tasks in the list. If the list is empty, informs the user.
      */
     public void printList() {
-        if (list.size() == 0) {
+        if (list.isEmpty()) {
             System.out.println("There is nothing in your list!");
         } else {
             System.out.println("Here are the tasks in your list:");
             for (int i = 0; i < list.size(); i++) {
                 int index = i + 1;
-                System.out.println("" + index + ". " + list.get(i));
+                System.out.println(index + ". " + list.get(i));
             }
         }
     }
@@ -167,4 +168,30 @@ public class TaskList {
         System.out.println(task);
         printListStatus();
     }
+
+    /**
+     * Prints a filtered list of tasks that contain the specified keyword.
+     *
+     * @param keyword The keyword to search for in the task list.
+     */
+    public void printFilteredList(String keyword) {
+
+        // Filter the tasks where the toString() representation contains the keyword
+        List<Task> filteredTasks = this.list.stream()
+                .filter(task -> task.toString().contains(keyword))
+                .toList();
+
+        // Print the results
+        if (filteredTasks.isEmpty()) {
+            System.out.println("No tasks found containing the keyword: " + keyword);
+        } else {
+            System.out.println("Here are the matching tasks in your list:");
+            for (int i = 0; i < filteredTasks.size(); i++) {
+                Task task = filteredTasks.get(i);
+                int index = i + 1;
+                System.out.println(index + ". " + task.toString());
+            }
+        }
+    }
+
 }
