@@ -72,4 +72,11 @@ public class Qwerty {
     public static void main(String[] args) {
         new Qwerty("./data/Qwerty.txt").run(); // Starts the Qwerty bot with a file path for storage.
     }
+
+    /**
+     * Generates a response for the user's chat message.
+     */
+    public String getResponse(String input) {
+        return "Duke heard: " + input;
+    }
 }
