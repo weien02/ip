@@ -1,5 +1,10 @@
 package qwerty.commands;
 
+import qwerty.exceptions.BotException;
+import qwerty.ui.Storage;
+import qwerty.ui.TaskList;
+import qwerty.ui.Ui;
+
 /**
  * Represents a command to terminate the bot's operation.
  * This command corresponds to the "bye" action and overrides the
@@ -16,5 +21,10 @@ public class ByeCommand extends BotCommand {
     @Override
     public boolean isBye() {
         return true;
+    }
+
+    @Override
+    public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
+        ui.showBye();
     }
 }

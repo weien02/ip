@@ -10,6 +10,7 @@ public class Ui {
 
     private final String breakline = "------------------------------------------------------------"; // Separator line.
     private final String welcomeMessage = "Hi! I'm Qwerty!\nHow can I help?"; // Welcome message to display.
+    private final String byeMessage = "Bye! See you soon!";
     private final Scanner scanner = new Scanner(System.in); // Scanner to read user input.
 
     /**
@@ -24,6 +25,10 @@ public class Ui {
      */
     public void showLine() {
         System.out.println(breakline);
+    }
+
+    public void showBye() {
+        System.out.println(byeMessage);
     }
 
     /**

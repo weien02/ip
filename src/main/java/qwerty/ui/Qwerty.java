@@ -1,5 +1,7 @@
 package qwerty.ui;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 import qwerty.commands.BotCommand;
@@ -59,7 +61,6 @@ public class Qwerty {
                 }
             }
         }
-        System.out.println("Bye! See you soon!"); // Farewell message when the loop ends.
         ui.closeScanner(); // Closes the scanner to clean up resources.
     }
 
@@ -77,6 +78,23 @@ public class Qwerty {
      * Generates a response for the user's chat message.
      */
     public String getResponse(String input) {
-        return "Duke heard: " + input;
+        // Capture System.out.println output
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(outputStream);
+        PrintStream originalOut = System.out; // Save original System.out
+
+        System.setOut(printStream); // Redirect System.out
+
+        try {
+            BotCommand c = Parser.parse(input); // Parses the command and creates the BotCommand.
+            c.execute(tasks, ui, storage);
+            return outputStream.toString().trim();
+        } catch (BotException b) {
+            return b.toString();
+        } catch (Exception e) {
+            return e.getMessage();
+        } finally {
+            System.setOut(originalOut); // Restore System.out
+        }
     }
 }

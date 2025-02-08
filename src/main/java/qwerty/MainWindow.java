@@ -11,6 +11,9 @@ import qwerty.ui.Qwerty;
  * Controller for the main GUI.
  */
 public class MainWindow extends AnchorPane {
+
+    private final String welcomeMessage = "Hi! I'm Qwerty!\nHow can I help?"; // Welcome message to display.
+
     @FXML
     private ScrollPane scrollPane;
     @FXML
@@ -28,6 +31,9 @@ public class MainWindow extends AnchorPane {
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+        dialogContainer.getChildren().add(
+                DialogBox.getQwertyDialog(welcomeMessage, qwertyImage)
+        );
     }
 
     /** Injects the Qwerty instance */
