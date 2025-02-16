@@ -9,8 +9,7 @@ import qwerty.exceptions.BotException;
 import qwerty.task.Task;
 
 /**
- * The main application class for Qwerty bot, responsible for running the bot and managing tasks.
- * This class initializes the bot with a given file path, handles user input, executes commands,
+ * Initializes the bot with a given file path, handles user input, executes commands,
  * and displays appropriate messages.
  */
 public class Qwerty {
