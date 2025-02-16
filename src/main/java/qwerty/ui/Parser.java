@@ -8,6 +8,7 @@ import qwerty.commands.DeleteCommand;
 import qwerty.commands.EventCommand;
 import qwerty.commands.FindCommand;
 import qwerty.commands.ListCommand;
+import qwerty.commands.LoanCommand;
 import qwerty.commands.MarkCommand;
 import qwerty.commands.TodoCommand;
 import qwerty.commands.UnmarkCommand;
@@ -79,6 +80,8 @@ public class Parser {
                 return new DeadlineCommand(desc);
             case "event":
                 return new EventCommand(desc);
+            case "loan":
+                return new LoanCommand(desc);
             case "find":
                 return new FindCommand(desc);
             default:

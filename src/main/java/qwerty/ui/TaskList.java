@@ -8,6 +8,7 @@ import qwerty.exceptions.IncorrectFormatException;
 import qwerty.exceptions.InvalidIndexException;
 import qwerty.task.Deadline;
 import qwerty.task.Event;
+import qwerty.task.Loan;
 import qwerty.task.Task;
 import qwerty.task.ToDo;
 
@@ -106,6 +107,24 @@ public class TaskList {
         Task newTask = new Event(parts[0], parts[1], parts[2]);
         list.add(newTask);
         System.out.println("Gotcha. I've added this event:");
+        System.out.println(newTask);
+        printListStatus();
+    }
+
+    /**
+     * Adds an Loan task to the list.
+     *
+     * @param desc The description of the task.
+     * @throws BotException If the task description is incorrectly formatted.
+     */
+    public void addLoanToList(String desc) throws BotException {
+        String[] parts = desc.split(" /from | /to ");
+        if (parts.length != 3) {
+            throw new IncorrectFormatException("loan");
+        }
+        Task newTask = new Loan(parts[0], parts[1], parts[2]);
+        list.add(newTask);
+        System.out.println("Gotcha. I've added this loan:");
         System.out.println(newTask);
         printListStatus();
     }

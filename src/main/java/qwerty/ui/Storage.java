@@ -9,10 +9,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import qwerty.exceptions.BotException;
+
 import qwerty.task.Deadline;
 import qwerty.task.Event;
-import qwerty.task.Task;
+import qwerty.task.Loan;
 import qwerty.task.ToDo;
+import qwerty.task.Task;
 
 /**
  * The Storage class is responsible for handling file operations related to task storage.
@@ -79,6 +81,9 @@ public class Storage {
                     break;
                 case 'E':
                     task = new Event(details, parts[3], parts[4]);
+                    break;
+                case 'L':
+                    task = new Loan(details, parts[3], parts[4]);
                     break;
                 default:
                     break;
