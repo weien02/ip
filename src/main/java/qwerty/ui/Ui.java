@@ -38,6 +38,7 @@ public class Ui {
      */
     public String readCommand() {
         String command = scanner.nextLine();
+        assert command.length() > 0 : "Command should not be an empty string!";
         return command;
     }
 
