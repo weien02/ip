@@ -8,11 +8,11 @@ import qwerty.ui.Ui;
 /**
  * Represents a command to add a new Loan task.
  * Inherits from {@link BotCommand} and implements the execution logic
- * for adding an Loan task to the task list and saving it to storage.
+ * for adding a Loan task to the task list and saving it to storage.
  */
 public class LoanCommand extends BotCommand {
 
-    private String desc; // Description of the Event task.
+    private final String DESC; // Description of the Event task.
 
     /**
      * Constructs an LoanCommand with the specified description.
@@ -20,7 +20,7 @@ public class LoanCommand extends BotCommand {
      * @param desc The description of the Event task to be added.
      */
     public LoanCommand(String desc) {
-        this.desc = desc;
+        this.DESC = desc;
     }
 
     /**
@@ -33,7 +33,7 @@ public class LoanCommand extends BotCommand {
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
-        tasks.addLoanToList(this.desc); // Adds the Loan task to the list.
+        tasks.addLoanToList(this.DESC); // Adds the Loan task to the list.
         storage.saveListToFile(tasks); // Saves the updated task list to storage.
     }
 }

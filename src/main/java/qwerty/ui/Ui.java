@@ -8,27 +8,27 @@ import java.util.Scanner;
  */
 public class Ui {
 
-    private final String breakline = "------------------------------------------------------------"; // Separator line.
-    private final String welcomeMessage = "Hi! I'm Qwerty!\nHow can I help?"; // Welcome message to display.
-    private final String byeMessage = "Bye! See you soon!";
-    private final Scanner scanner = new Scanner(System.in); // Scanner to read user input.
+    private final String BREAKLINE = "------------------------------------------------------------"; // Separator line.
+    private final String WELCOME_MESSAGE = "Hi! I'm Qwerty!\nHow can I help?"; // Welcome message to display.
+    private final String BYE_MESSAGE = "Bye! See you soon!";
+    private final Scanner SCANNER = new Scanner(System.in); // Scanner to read user input.
 
     /**
      * Displays a welcome message to the user.
      */
     public void showWelcome() {
-        System.out.println(welcomeMessage);
+        System.out.println(WELCOME_MESSAGE);
     }
 
     /**
      * Displays a separator line to visually separate outputs.
      */
     public void showLine() {
-        System.out.println(breakline);
+        System.out.println(BREAKLINE);
     }
 
     public void showBye() {
-        System.out.println(byeMessage);
+        System.out.println(BYE_MESSAGE);
     }
 
     /**
@@ -37,7 +37,7 @@ public class Ui {
      * @return The command entered by the user.
      */
     public String readCommand() {
-        String command = scanner.nextLine();
+        String command = SCANNER.nextLine();
         assert command.length() > 0 : "Command should not be an empty string!";
         return command;
     }
@@ -46,6 +46,6 @@ public class Ui {
      * Closes the scanner to release the resources associated with it.
      */
     public void closeScanner() {
-        this.scanner.close();
+        this.SCANNER.close();
     }
 }

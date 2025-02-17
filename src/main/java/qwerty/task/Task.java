@@ -18,8 +18,8 @@ public class Task {
      * @throws EmptyTaskNameException If the task name is empty.
      */
     public Task(String name) throws EmptyTaskNameException {
-        if (name.length() == 0) {
-            throw new EmptyTaskNameException(); // Throws exception if the name is empty.
+        if (name.isEmpty()) {
+            throw new EmptyTaskNameException();
         }
         this.name = name;
         this.isDone = false; // Task is not done initially.

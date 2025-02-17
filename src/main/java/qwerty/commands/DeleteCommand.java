@@ -12,7 +12,7 @@ import qwerty.ui.Ui;
  */
 public class DeleteCommand extends BotCommand {
 
-    private int index; // Index of the task to be deleted.
+    private final int INDEX; // Index of the task to be deleted.
 
     /**
      * Constructs a DeleteCommand with the specified task index.
@@ -20,7 +20,7 @@ public class DeleteCommand extends BotCommand {
      * @param index The index of the task to be deleted from the task list.
      */
     public DeleteCommand(int index) {
-        this.index = index;
+        this.INDEX = index;
     }
 
     /**
@@ -33,7 +33,7 @@ public class DeleteCommand extends BotCommand {
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
-        tasks.deleteTask(this.index); // Deletes the task at the specified index.
-        storage.saveListToFile(tasks); // Saves the updated task list to storage.
+        tasks.deleteTask(this.INDEX);
+        storage.saveListToFile(tasks);
     }
 }

@@ -8,8 +8,8 @@ import qwerty.exceptions.EmptyTaskNameException;
  */
 public class Loan extends Task {
 
-    private String from;
-    private String to;
+    private final String FROM;
+    private final String TO;
 
     /**
      * Constructs a Loan task with the specified name, start time, and end time.
@@ -21,8 +21,8 @@ public class Loan extends Task {
      */
     public Loan(String name, String from, String to) throws EmptyTaskNameException {
         super(name);
-        this.from = from;
-        this.to = to;
+        this.FROM = from;
+        this.TO = to;
     }
 
     /**
@@ -32,7 +32,7 @@ public class Loan extends Task {
      */
     @Override
     public String toString() {
-        return "[L]" + super.toString() + " (from: " + from + " to: " + to + ")";
+        return "[L]" + super.toString() + " (from: " + FROM + " to: " + TO + ")";
     }
 
     /**
@@ -42,6 +42,6 @@ public class Loan extends Task {
      */
     @Override
     public String toSaveString() {
-        return "L | " + (this.isDone ? "1 | " : "0 | ") + this.name + " | " + from + " | " + to;
+        return "L | " + (this.isDone ? "1 | " : "0 | ") + this.name + " | " + FROM + " | " + TO;
     }
 }

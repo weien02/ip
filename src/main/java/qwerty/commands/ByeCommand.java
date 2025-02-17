@@ -6,7 +6,7 @@ import qwerty.ui.TaskList;
 import qwerty.ui.Ui;
 
 /**
- * Represents a command to terminate the bot's operation.
+ * Represents a command to terminate the bot operation.
  * This command corresponds to the "bye" action and overrides the
  * `isBye` method to return true.
  */

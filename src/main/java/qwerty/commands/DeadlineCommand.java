@@ -12,7 +12,7 @@ import qwerty.ui.Ui;
  */
 public class DeadlineCommand extends BotCommand {
 
-    private String desc; // Description of the Deadline task.
+    private final String DESC;
 
     /**
      * Constructs a DeadlineCommand with the specified description.
@@ -20,7 +20,7 @@ public class DeadlineCommand extends BotCommand {
      * @param desc The description of the Deadline task to be added.
      */
     public DeadlineCommand(String desc) {
-        this.desc = desc;
+        this.DESC = desc;
     }
 
     /**
@@ -33,7 +33,7 @@ public class DeadlineCommand extends BotCommand {
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
-        tasks.addDeadlineToList(this.desc); // Adds the Deadline task to the list.
+        tasks.addDeadlineToList(this.DESC);
         storage.saveListToFile(tasks); // Saves the updated task list to storage.
     }
 }

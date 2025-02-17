@@ -7,7 +7,7 @@ package qwerty.exceptions;
  */
 public class IncorrectFormatException extends BotException {
 
-    private String commandType; // Type of the command with incorrect format.
+    private final String COMMAND_TYPE; // Type of the command with incorrect format.
 
     /**
      * Constructs an IncorrectFormatException with the specified command type.
@@ -16,7 +16,7 @@ public class IncorrectFormatException extends BotException {
      */
     public IncorrectFormatException(String commandType) {
         super();
-        this.commandType = commandType;
+        this.COMMAND_TYPE = commandType;
     }
 
     /**
@@ -27,6 +27,6 @@ public class IncorrectFormatException extends BotException {
      */
     @Override
     public String toString() {
-        return super.toString() + " Please make sure your " + commandType + " description is formatted correctly!";
+        return super.toString() + " Please make sure your " + COMMAND_TYPE + " description is formatted correctly!";
     }
 }

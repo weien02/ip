@@ -9,12 +9,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import qwerty.exceptions.BotException;
-
 import qwerty.task.Deadline;
 import qwerty.task.Event;
 import qwerty.task.Loan;
-import qwerty.task.ToDo;
 import qwerty.task.Task;
+import qwerty.task.ToDo;
 
 /**
  * The Storage class is responsible for handling file operations related to task storage.

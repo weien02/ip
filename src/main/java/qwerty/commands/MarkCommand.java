@@ -12,7 +12,7 @@ import qwerty.ui.Ui;
  */
 public class MarkCommand extends BotCommand {
 
-    private int index; // Index of the task to be marked as done.
+    private final int INDEX; // Index of the task to be marked as done.
 
     /**
      * Constructs a MarkCommand with the specified task index.
@@ -20,7 +20,7 @@ public class MarkCommand extends BotCommand {
      * @param index The index of the task to be marked as done.
      */
     public MarkCommand(int index) {
-        this.index = index;
+        this.INDEX = index;
     }
 
     /**
@@ -33,7 +33,7 @@ public class MarkCommand extends BotCommand {
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
-        tasks.markAsDone(this.index); // Marks the task at the specified index as done.
+        tasks.markAsDone(this.INDEX);
         storage.saveListToFile(tasks); // Saves the updated task list to storage.
     }
 }

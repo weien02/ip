@@ -8,16 +8,16 @@ import qwerty.exceptions.UnknownCommandException;
  * Each constant in the enum corresponds to a specific command type.
  */
 public enum CommandsEnum {
-    bye, // Command to terminate the bot's operation.
-    list, // Command to list all tasks.
-    mark, // Command to mark a task as done.
-    unmark, // Command to unmark a task.
-    delete, // Command to delete a task.
-    todo, // Command to create a ToDo task.
-    deadline, // Command to create a Deadline task.
-    event, // Command to create an Event task.
-    loan, // Command to create a Loan task.
-    find; // Command to find a task.
+    bye,
+    list,
+    mark,
+    unmark,
+    delete,
+    todo,
+    deadline,
+    event,
+    loan,
+    find;
 
     /**
      * Checks if the provided command string corresponds to a valid command in the enum.

@@ -10,7 +10,7 @@ import qwerty.ui.Ui;
  */
 public class FindCommand extends BotCommand {
 
-    private String keyword;
+    private final String KEYWORD;
 
     /**
      * Constructs a FindCommand with the specified keyword.
@@ -18,7 +18,7 @@ public class FindCommand extends BotCommand {
      * @param keyword the keyword to search for in task descriptions
      */
     public FindCommand(String keyword) {
-        this.keyword = keyword;
+        this.KEYWORD = keyword;
     }
 
     /**
@@ -33,6 +33,6 @@ public class FindCommand extends BotCommand {
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
-        tasks.printFilteredList(this.keyword);
+        tasks.printFilteredList(this.KEYWORD);
     }
 }

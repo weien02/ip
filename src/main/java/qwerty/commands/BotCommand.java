@@ -30,6 +30,5 @@ public class BotCommand {
      * @throws BotException If an error occurs during command execution.
      */
     public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
-        return;
     }
 }

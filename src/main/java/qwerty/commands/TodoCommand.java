@@ -12,7 +12,7 @@ import qwerty.ui.Ui;
  */
 public class TodoCommand extends BotCommand {
 
-    private String desc; // Description of the ToDo task.
+    private final String DESC; // Description of the ToDo task.
 
     /**
      * Constructs a TodoCommand with the specified description.
@@ -20,7 +20,7 @@ public class TodoCommand extends BotCommand {
      * @param desc The description of the ToDo task to be added.
      */
     public TodoCommand(String desc) {
-        this.desc = desc;
+        this.DESC = desc;
     }
 
     /**
@@ -33,7 +33,7 @@ public class TodoCommand extends BotCommand {
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
-        tasks.addToDoToList(this.desc); // Adds the ToDo task to the list.
+        tasks.addToDoToList(this.DESC);
         storage.saveListToFile(tasks); // Saves the updated task list to storage.
     }
 }
