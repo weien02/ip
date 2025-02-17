@@ -1,6 +1,8 @@
 # Qwerty User Guide
 
-Welcome to Qwerty, the cheeky little task and loan manager that’ll help you keep track of everything on your todo list — from deadlines to events, and even loans (because we all know that *one* person who *always* forgets what they owe). It's easy to use, looks simple, but packs a punch when it comes to keeping you organised.
+Welcome to Qwerty, your very own task and loan manager that’ll help you keep track of everything on your todo list — from deadlines to events, and even loans (because we all know that *one* person who *always* forgets what they owe). It's easy to use, looks simple, but packs a punch when it comes to keeping you organised.
+
+No worries! Here’s the updated section with your changes:
 
 ---
 
@@ -8,8 +10,18 @@ Welcome to Qwerty, the cheeky little task and loan manager that’ll help you ke
 
 You can grab Qwerty from the GitHub releases page:
 
-- **Download the JAR file**: [Qwerty.jar](https://github.com/weien02/ip/releases)
-    - Click the file and away you go!
+### Download the JAR file: [Qwerty.jar](https://github.com/weien02/ip/releases)
+  - **Copy the Qwerty.jar file** to an empty folder on your computer. This will be Qwerty’s new home!
+
+Then, follow these steps:
+
+1. **Open a command terminal**.
+2. **Navigate** (cd) into the folder where you placed the `Qwerty.jar` file.
+3. **Run the application** using the following command:
+
+```bash
+java -jar Qwerty.jar
+```
 
 If you’re feeling a bit more adventurous, you can clone the repo and build it yourself. Here’s how:
 
@@ -64,7 +76,7 @@ Once Qwerty’s up and running, it’s all about those nifty commands. Here’s 
   event Recess Week /from 22 February /to 2 March
   ```
 
-- **loan {desc} /from {loaner} /to {loanee}**: Need to track a loan? Whether it’s money, books, or a DVD that’s probably never coming back, add it here.
+- **loan {desc} /from {loaner} /to {loanee}**: Need to track a loan? Whether it’s money, books, or a stationery that’s probably never coming back, add it here.
 
   ```text
   loan $1000 /from me /to Alice
