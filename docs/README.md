@@ -2,11 +2,9 @@
 
 Welcome to Qwerty, your very own task and loan manager that’ll help you keep track of everything on your todo list — from deadlines to events, and even loans (because we all know that *one* person who *always* forgets what they owe). It's easy to use, looks simple, but packs a punch when it comes to keeping you organised.
 
-No worries! Here’s the updated section with your changes:
-
 ---
 
-## Where to Download
+## Where to Download?
 
 You can grab Qwerty from the GitHub releases page:
 
