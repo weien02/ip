@@ -83,7 +83,7 @@ public class Storage {
      * @return The corresponding Task object, or null if the type is invalid.
      * @throws BotException If there is an error creating the task.
      */
-    private Task parseTaskFromLine(String line) throws BotException {
+    public Task parseTaskFromLine(String line) throws BotException {
         String[] parts = line.split("\\s*\\|\\s*");
         char type = parts[0].charAt(0);
         boolean isDone = parts[1].charAt(0) == '1';

@@ -45,7 +45,7 @@ public class Parser {
      * @param fullCommand The full command input.
      * @return A String array where index 0 is the command and index 1 is the description.
      */
-    private static String[] extractCommandAndDesc(String fullCommand) {
+    public static String[] extractCommandAndDesc(String fullCommand) {
         int spaceIndex = fullCommand.indexOf(' ');
         String command = (spaceIndex != -1) ? fullCommand.substring(0, spaceIndex) : fullCommand;
         String desc = (spaceIndex != -1) ? fullCommand.substring(spaceIndex + 1) : "";
@@ -60,7 +60,7 @@ public class Parser {
      * @return A BotCommand instance corresponding to the given command.
      * @throws BotException If the command is unknown or validation fails.
      */
-    private static BotCommand createCommand(String command, String desc) throws BotException {
+    public static BotCommand createCommand(String command, String desc) throws BotException {
         switch (command) {
         case "bye":
             return new ByeCommand();
