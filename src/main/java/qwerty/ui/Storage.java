@@ -65,40 +65,62 @@ public class Storage {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] parts = line.split("\\s*\\|\\s*"); // Splits the line into components.
-                char type = parts[0].charAt(0); // The task type (T, D, E).
-                boolean isDone = parts[1].charAt(0) == '1'; // Indicates if the task is marked as done.
-                String details = parts[2]; // The task description.
-                Task task = null;
-                // Creates the appropriate task object based on the type.
-                switch (type) {
-                case 'T':
-                    task = new ToDo(details);
-                    break;
-                case 'D':
-                    task = new Deadline(details, parts[3]);
-                    break;
-                case 'E':
-                    task = new Event(details, parts[3], parts[4]);
-                    break;
-                case 'L':
-                    task = new Loan(details, parts[3], parts[4]);
-                    break;
-                default:
-                    break;
+                Task task = parseTaskFromLine(line);
+                if (task != null) {
+                    tasks.add(task);
                 }
-                if (isDone) {
-                    task.markTaskDone(); // Marks the task as done if it was indicated in the file.
-                }
-                tasks.add(task); // Adds the task to the list.
             }
-        } catch (IOException e) {
-            System.out.println(e.getMessage()); // Prints error message if file reading fails.
-            tasks = new ArrayList<>(); // Returns an empty task list on error.
-        } catch (BotException b) {
-            System.out.println(b); // Prints any BotException that occurs during task creation.
-            tasks = new ArrayList<>(); // Returns an empty task list on error.
+        } catch (IOException | BotException e) {
+            tasks = handleReadError(e);
         }
-        return tasks; // Returns the list of tasks read from the file.
+        return tasks;
+    }
+
+    /**
+     * Parses a line from the file and creates the corresponding Task object.
+     *
+     * @param line A line from the file containing task details.
+     * @return The corresponding Task object, or null if the type is invalid.
+     * @throws BotException If there is an error creating the task.
+     */
+    private Task parseTaskFromLine(String line) throws BotException {
+        String[] parts = line.split("\\s*\\|\\s*");
+        char type = parts[0].charAt(0);
+        boolean isDone = parts[1].charAt(0) == '1';
+        String details = parts[2];
+
+        Task task;
+        switch (type) {
+        case 'T':
+            task = new ToDo(details);
+            break;
+        case 'D':
+            task = new Deadline(details, parts[3]);
+            break;
+        case 'E':
+            task = new Event(details, parts[3], parts[4]);
+            break;
+        case 'L':
+            task = new Loan(details, parts[3], parts[4]);
+            break;
+        default:
+            return null; // Invalid type
+        }
+
+        if (isDone) {
+            task.markTaskDone();
+        }
+        return task;
+    }
+
+    /**
+     * Handles errors during file reading and returns an empty task list.
+     *
+     * @param e The exception encountered.
+     * @return An empty task list.
+     */
+    private ArrayList<Task> handleReadError(Exception e) {
+        System.out.println(e.getMessage());
+        return new ArrayList<>();
     }
 }

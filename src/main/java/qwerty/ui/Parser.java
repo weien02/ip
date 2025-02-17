@@ -40,6 +40,54 @@ public class Parser {
     }
 
     /**
+     * Extracts the command and description from the full command string.
+     *
+     * @param fullCommand The full command input.
+     * @return A String array where index 0 is the command and index 1 is the description.
+     */
+    private static String[] extractCommandAndDesc(String fullCommand) {
+        int spaceIndex = fullCommand.indexOf(' ');
+        String command = (spaceIndex != -1) ? fullCommand.substring(0, spaceIndex) : fullCommand;
+        String desc = (spaceIndex != -1) ? fullCommand.substring(spaceIndex + 1) : "";
+        return new String[]{command, desc};
+    }
+
+    /**
+     * Creates the appropriate BotCommand based on the command and description.
+     *
+     * @param command The extracted command.
+     * @param desc The extracted description.
+     * @return A BotCommand instance corresponding to the given command.
+     * @throws BotException If the command is unknown or validation fails.
+     */
+    private static BotCommand createCommand(String command, String desc) throws BotException {
+        switch (command) {
+        case "bye":
+            return new ByeCommand();
+        case "list":
+            return new ListCommand();
+        case "mark":
+            return new MarkCommand(validateIndex(desc));
+        case "unmark":
+            return new UnmarkCommand(validateIndex(desc));
+        case "delete":
+            return new DeleteCommand(validateIndex(desc));
+        case "todo":
+            return new TodoCommand(desc);
+        case "deadline":
+            return new DeadlineCommand(desc);
+        case "event":
+            return new EventCommand(desc);
+        case "loan":
+            return new LoanCommand(desc);
+        case "find":
+            return new FindCommand(desc);
+        default:
+            throw new UnknownCommandException();
+        }
+    }
+
+    /**
      * Parses a user command and returns the corresponding BotCommand object.
      *
      * @param fullCommand The full user input command.
@@ -47,50 +95,10 @@ public class Parser {
      * @throws BotException If the command is unknown or incorrectly formatted.
      */
     public static BotCommand parse(String fullCommand) throws BotException {
-        try {
-            int spaceIndex = fullCommand.indexOf(' '); // Finds the space separating the command and description.
-
-            String command;
-            String desc;
-            if (spaceIndex != -1) {
-                command = fullCommand.substring(0, spaceIndex);
-                desc = fullCommand.substring(spaceIndex + 1);
-            } else {
-                command = fullCommand;
-                desc = "";
-            }
-
-            CommandsEnum.contains(command); // Validates the command.
-
-            // Returns the appropriate BotCommand based on the command.
-            switch (command) {
-            case "bye":
-                return new ByeCommand();
-            case "list":
-                return new ListCommand();
-            case "mark":
-                return new MarkCommand(validateIndex(desc));
-            case "unmark":
-                return new UnmarkCommand(validateIndex(desc));
-            case "delete":
-                return new DeleteCommand(validateIndex(desc));
-            case "todo":
-                return new TodoCommand(desc);
-            case "deadline":
-                return new DeadlineCommand(desc);
-            case "event":
-                return new EventCommand(desc);
-            case "loan":
-                return new LoanCommand(desc);
-            case "find":
-                return new FindCommand(desc);
-            default:
-                throw new UnknownCommandException(); // Throws exception if the command is unrecognized.
-            }
-        } catch (BotException e) {
-            throw e; // Re-throws BotException.
-        } catch (Exception e) {
-            throw new UnknownCommandException(); // Throws UnknownCommandException for any other exceptions.
-        }
+        String[] commandParts = extractCommandAndDesc(fullCommand);
+        String command = commandParts[0];
+        String desc = commandParts[1];
+        CommandsEnum.contains(command); // Validates the command.
+        return createCommand(command, desc);
     }
 }
