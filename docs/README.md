@@ -1,6 +1,6 @@
 # Qwerty User Guide
 
-Welcome to Qwerty, your very own task and loan manager that’ll help you keep track of everything on your todo list — from deadlines to events, and even loans (because we all know that *one* person who *always* forgets what they owe). It's easy to use, looks simple, but packs a punch when it comes to keeping you organised.
+Welcome to Qwerty, your very own task and loan manager that’ll help you keep track of everything on your todo list — from deadlines to events, and even loans. Not only that, Qwerty not-so-secretly judges you for your procrastination. Ready to be guilt-tripped into productivity? Qwerty's gotchu.
 
 ---
 
@@ -9,7 +9,7 @@ Welcome to Qwerty, your very own task and loan manager that’ll help you keep t
 You can grab Qwerty from the GitHub releases page:
 
 ### Download the JAR file: [Qwerty.jar](https://github.com/weien02/ip/releases)
-  - **Copy the Qwerty.jar file** to an empty folder on your computer. This will be Qwerty’s new home!
+  - **Copy the Qwerty.jar file** to an empty folder on your computer.
 
 Then, follow these steps:
 
@@ -46,29 +46,29 @@ Once you're in the project directory, run this to build and launch Qwerty:
 
 ## How to Use Qwerty?
 
-Once Qwerty’s up and running, it’s all about those nifty commands. Here’s the rundown:
+Once Qwerty’s up and running, it’s all about those commands. Here’s the rundown:
 
 ### Commands
 
-- **list**: See all your current tasks, laid out nice and simple.
+- **list**: See all your current tasks.
 
   ```text
   list
   ```
 
-- **todo {desc}**: Add a To-Do task. Just pop in a description of what you need to do. It’s as easy as pie!
+- **todo {desc}**: Add a To-Do task. Just add in a description of what you need to do.
 
   ```text
   todo Buy groceries
   ```
 
-- **deadline {desc} /by {yyyy-MM-dd HHmm}**: Got a deadline? No worries, just add your task with a due date and time in this format: `yyyy-MM-dd HHmm`.
+- **deadline {desc} /by {yyyy-MM-dd HHmm}**: Got a deadline? No worries, just add it here with a due date and time in this format: `yyyy-MM-dd HHmm`.
 
   ```text
   deadline Finish homework /by 2025-02-20 1800
   ```
 
-- **event {desc} /from {start} /to {end}**: Got an event coming up? Whether it’s a meeting or a birthday party, add it here with the start and end times.
+- **event {desc} /from {start} /to {end}**: Got an event coming up? Add it here with the start and end times.
 
   ```text
   event Recess Week /from 22 February /to 2 March
@@ -86,13 +86,13 @@ Once Qwerty’s up and running, it’s all about those nifty commands. Here’s 
   find homework
   ```
 
-- **mark {index}**: Finished something? Mark it as done, and feel smug about it.
+- **mark {index}**: Finished something? Mark it as done, but don't feel too smug about it.
 
   ```text
   mark 1
   ```
 
-- **unmark {index}**: Oh no, made a mistake? Unmark it and start again.
+- **unmark {index}**: Oh no, jumped the gun? Unmark it and start again.
 
   ```text
   unmark 1
@@ -104,7 +104,7 @@ Once Qwerty’s up and running, it’s all about those nifty commands. Here’s 
   delete 3
   ```
 
-- **bye**: Saying goodbye? Let Qwerty know you’re off. It won’t be offended.
+- **bye**: Saying goodbye? Let Qwerty know.
 
   ```text
   bye

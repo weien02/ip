@@ -44,9 +44,9 @@ public class TaskList {
      */
     public void printList() {
         if (list.isEmpty()) {
-            System.out.println("There is nothing in your list!");
+            System.out.println("Surprise, surprise! There is nothing in your list!");
         } else {
-            System.out.println("Here are the tasks in your list:");
+            System.out.println("Here are the tasks in your never-ending list:");
             for (int i = 0; i < list.size(); i++) {
                 int index = i + 1;
                 System.out.println(index + ". " + list.get(i));
@@ -58,7 +58,7 @@ public class TaskList {
      * Prints the status of the task list, showing the current number of tasks.
      */
     public void printListStatus() {
-        System.out.println("Now you have " + list.size() + " task" + (list.size() == 1 ? " " : "s ") + "in the list.");
+        System.out.println("You now have " + list.size() + " task" + (list.size() == 1 ? "" : "s") + ", waiting to be ignored.");
     }
 
     /**
@@ -70,8 +70,8 @@ public class TaskList {
     public void addToDoToList(String desc) throws BotException {
         Task newTask = new ToDo(desc);
         list.add(newTask);
-        System.out.println("Gotcha. I've added this todo:");
-        System.out.println(newTask);
+        System.out.println("Ok. I've added this todo:");
+        System.out.println(newTask + "\n");
         printListStatus();
     }
 
@@ -88,8 +88,8 @@ public class TaskList {
         }
         Task newTask = new Deadline(parts[0], parts[1]);
         list.add(newTask);
-        System.out.println("Gotcha. I've added this deadline:");
-        System.out.println(newTask);
+        System.out.println("Fine, I've added this deadline:");
+        System.out.println(newTask + "\n");
         printListStatus();
     }
 
@@ -106,8 +106,8 @@ public class TaskList {
         }
         Task newTask = new Event(parts[0], parts[1], parts[2]);
         list.add(newTask);
-        System.out.println("Gotcha. I've added this event:");
-        System.out.println(newTask);
+        System.out.println("Fine, I've added this event:");
+        System.out.println(newTask + "\n");
         printListStatus();
     }
 
@@ -124,8 +124,8 @@ public class TaskList {
         }
         Task newTask = new Loan(parts[0], parts[1], parts[2]);
         list.add(newTask);
-        System.out.println("Gotcha. I've added this loan:");
-        System.out.println(newTask);
+        System.out.println("Fine, I've added this loan:");
+        System.out.println(newTask + "\n");
         printListStatus();
     }
 
@@ -154,7 +154,7 @@ public class TaskList {
         Task task = list.get(i);
         task.markTaskDone();
         list.set(i, task);
-        System.out.println("Nice! I've marked this task as done:");
+        System.out.println("Took you long enough!\n\nI've marked this task as done:");
         System.out.println(list.get(i));
     }
 
@@ -169,7 +169,7 @@ public class TaskList {
         Task task = list.get(i);
         task.unmarkTaskDone();
         list.set(i, task);
-        System.out.println("OK, I've marked this task as not done yet:");
+        System.out.println("Jumped the gun, huh?\n\nI've marked this task as not done yet:");
         System.out.println(list.get(i));
     }
 
@@ -183,8 +183,9 @@ public class TaskList {
         i = validateIndex(i);
         Task task = list.get(i);
         list.remove(i);
-        System.out.println("Noted. I've removed this task:");
+        System.out.println("I've removed this task:");
         System.out.println(task);
+        System.out.println("\nNot like you were going to finish it anyway.\n");
         printListStatus();
     }
 
