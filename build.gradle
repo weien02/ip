@@ -47,7 +47,7 @@ application {
 }
 
 shadowJar {
-    archiveBaseName = "qwerty"
+    archiveBaseName = "Qwerty"
     archiveClassifier = null
 }
 

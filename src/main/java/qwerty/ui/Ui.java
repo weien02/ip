@@ -10,7 +10,7 @@ public class Ui {
 
     private final String BREAKLINE = "------------------------------------------------------------"; // Separator line.
     private final String WELCOME_MESSAGE = "I'm Qwerty!\nReady to assist you with that ever-growing list of not-done tasks"; // Welcome message to display.
-    private final String BYE_MESSAGE = "Bye! Maybe let's pretend you'll be productive the next time we chat.";
+    private final String BYE_MESSAGE = "Bye! Maybe try pretending you'll be productive the next time we chat.";
     private final Scanner SCANNER = new Scanner(System.in); // Scanner to read user input.
 
     /**

@@ -12,7 +12,7 @@ import qwerty.ui.Qwerty;
  */
 public class MainWindow extends AnchorPane {
 
-    private final String welcomeMessage = "It's me! Qwerty!\nTime to act like you're tackling that to-do list?";; // Welcome message to display.
+    private final String welcomeMessage = "It's me! Qwerty!\nTime to look busy, huh?";
 
     @FXML
     private ScrollPane scrollPane;

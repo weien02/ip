@@ -39,6 +39,10 @@ public class Task {
         this.isDone = false; // Sets task status to not completed.
     }
 
+    public boolean isDone() {
+        return this.isDone;
+    }
+
     /**
      * Returns a string representation of the Task, including the completion status.
      *

@@ -58,7 +58,8 @@ public class TaskList {
      * Prints the status of the task list, showing the current number of tasks.
      */
     public void printListStatus() {
-        System.out.println("You now have " + list.size() + " task" + (list.size() == 1 ? "" : "s") + ", waiting to be ignored.");
+        System.out.println("You now have " + list.size() + " task" + (list.size() == 1 ? "" : "s")
+            + ", waiting to probably be ignored.");
     }
 
     /**
@@ -184,8 +185,10 @@ public class TaskList {
         Task task = list.get(i);
         list.remove(i);
         System.out.println("I've removed this task:");
-        System.out.println(task);
-        System.out.println("\nNot like you were going to finish it anyway.\n");
+        System.out.println(task + "\n");
+        if (!task.isDone()) {
+            System.out.println("Not like you were going to finish it anyway.\n");
+        }
         printListStatus();
     }
 
